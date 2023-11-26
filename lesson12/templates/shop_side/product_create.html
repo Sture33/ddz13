@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Create</title>
+</head>
+<body>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name">
+        <input type="number" name="price">
+        <input type="number" name="quantity">
+        <select name="category">
+            {% for category in category_list %}
+                <option value="{{ category.pk }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+        {% for shop in shop_list %}
+            <label for={{shop.pk}}>{{shop}}</label>
+            <input type="checkbox" value="{{shop.pk}}" id={{shop.pk}} name="shop">
+        {% endfor %}
+
+
+
+        <input type="submit" value="Create">
+    </form>
+
+</body>
+</html>
